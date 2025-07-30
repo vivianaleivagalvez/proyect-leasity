@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Editar contacto
+
+</h2>
+<form [formGroup]="form">
+<mat-dialog-content class="content-grid">
+    <div class="row two-columns">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" >
+            <mat-error *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)">
+            Nombre es obligatorio.
+            </mat-error>
+        </mat-form-field>
+            <mat-form-field>
+            <mat-label>Rut</mat-label>
+            <input matInput formControlName="dni">
+            <mat-error *ngIf="form.controls.dni.invalid && (form.controls.dni.dirty || form.controls.dni.touched)">
+            Rut es obligatorio.
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row full-width">
+        <mat-form-field>
+        <mat-label>Correo</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)">
+            <ng-container *ngIf="form.controls.email.hasError('required')">Correo es obligatorio.</ng-container>
+            <ng-container *ngIf="form.controls.email.hasError('email')">Formato de correo inválido.</ng-container>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row full-width">
+        <mat-label>Etiquetas</mat-label>
+           <mat-chip-set aria-label="Etiquetas">
+                <mat-chip *ngFor="let tag of data.label" color="primary" selected>
+                {{ tag }}
+                </mat-chip>
+                </mat-chip-set>
+            </div>
+  
+</mat-dialog-content>
+</form>
+<mat-dialog-actions class="row two-columns-buttons">
+    <button mat-stroked-button mat-dialog-close>Cancelar</button>
+    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="save()">Aceptar</button>
+        
+    
+</mat-dialog-actions>

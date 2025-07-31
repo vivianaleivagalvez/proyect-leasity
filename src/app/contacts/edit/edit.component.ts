@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { formatRut, isRutValid } from '@ftapiat/js-rut-utils';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 
@@ -45,6 +46,19 @@ export class EditComponent {
      
     
   }
+
+
+  onInputRut(event: Event) {
+    const input = (event.target as HTMLInputElement).value;
+    const clean = input.replace(/[^0-9kK]/g, '');
+    try {
+      const formatted = formatRut(clean);
+      this.form.controls['dni'].patchValue(formatted, { emitEvent: false });
+    } catch {
+      
+    }
+  }
+
 
 
  validarRut(control: AbstractControl): ValidationErrors | null {

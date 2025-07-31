@@ -1,7 +1,7 @@
-import { Component, Inject, Input } from '@angular/core';
-import { IContactElement } from '../../shared/contact-data.interface';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -13,18 +13,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class EditComponent {
   form: FormGroup;
-
+  labelList: string[] = ['FrontEnd', 'BackEnd', 'Diseño', 'DevOps'];
   constructor(
     public dialogRef: MatDialogRef<EditComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IContactElement,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
   ) {
     this.form = this.fb.group({
-      name: [data.name, Validators.required],
-      dni: [data.dni, Validators.required],
-      email: [data.email, [Validators.required, Validators.email]],
+      name: [data?.contact?.name, Validators.required],
+      dni: [data?.contact?.dni, [Validators.required, this.validarRut]],
+      email: [data?.contact?.email, [Validators.required, Validators.email]],
+      label: [data?.contact?.label],
     });
   }
+
+
+    ngOnInit() {
+      console.log(this.data)
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -32,13 +38,31 @@ export class EditComponent {
 
   save(): void{
     if (!this.form.invalid) {
-      this.dialogRef.close({...this.data, ...this.form.value})
+      this.dialogRef.close({...this.form.value})
     }else{
     this.form.markAllAsTouched();
     }
      
     
   }
-  
-  
+
+
+ validarRut(control: AbstractControl): ValidationErrors | null {
+  const rut = (control.value || '').replace(/\./g, '').replace(/-/g, '').toUpperCase();
+  if (!/^\d+k?$/i.test(rut)) return { invalidRut: true };
+
+  const num = rut.slice(0, -1);
+  const dv = rut.slice(-1);
+  let suma = 0, factor = 2;
+  for (let i = num.length - 1; i >= 0; i--) {
+    suma += +num[i] * factor;
+    factor = factor < 7 ? factor + 1 : 2;
+  }
+  const resto = suma % 11;
+  const dvEsperado =
+    (11 - resto === 11 ? '0' : (11 - resto === 10 ? 'K' : (11 - resto).toString()));
+  return dvEsperado === dv ? null : { invalidRut: true };
 }
+
+}
+

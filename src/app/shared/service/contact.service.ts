@@ -22,13 +22,23 @@ contact$ = this.contactsSubject.asObservable();
   }
 
    add(contact: IContactElement) {
-    const list = [...this.loadContacts(), contact];
-    this.saveContacts(list);
+    const current = this.loadContacts();
+    const exists = current.some(c => c.id === contact.id);
+    if(!exists){
+       const list = [...current, contact];
+      this.saveContacts(list);
+    }
   }
 
   update(update: IContactElement){
-    debugger;
     const list = this.loadContacts().map(c => c.id === update.id ? update : c);
-    this.saveContacts(list)
+    this.saveContacts(list);
+  }
+
+  delete(id: number): void{
+    const current = this.loadContacts();
+    const update = current.filter(c => c.id !== id);
+    this.saveContacts(update);
+    this.contactsSubject.next(update);
   }
 }

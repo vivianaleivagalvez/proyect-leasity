@@ -12,9 +12,14 @@ import { MatInputModule }     from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConfirmDialogComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,7 +31,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatChipsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   exports: [
     CommonModule,
@@ -39,7 +45,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatChipsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

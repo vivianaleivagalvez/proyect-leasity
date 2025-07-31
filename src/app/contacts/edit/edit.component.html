@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Editar contacto
+<h2 mat-dialog-title>{{ data.title}}
 
 </h2>
 <form [formGroup]="form">
@@ -31,15 +31,27 @@
         </mat-form-field>
     </div>
 
+    <ng-container *ngIf="data?.contact?.label.length > 0; else templateElse">
     <div class="row full-width">
-        <mat-label>Etiquetas</mat-label>
-           <mat-chip-set aria-label="Etiquetas">
-                <mat-chip *ngFor="let tag of data.label" color="primary" selected>
-                {{ tag }}
-                </mat-chip>
-                </mat-chip-set>
-            </div>
-  
+            <mat-label>Etiquetas</mat-label>
+            <mat-chip-set aria-label="Etiquetas">
+                    <mat-chip *ngFor="let tag of data.contact.label" color="primary" selected>
+                    {{ tag }}
+                    </mat-chip>
+                    </mat-chip-set>
+        </div>
+    </ng-container>   
+    <ng-template #templateElse>
+    <mat-form-field>
+            <mat-label>Etiquetas</mat-label>
+            <mat-select formControlName="label" multiple>
+                @for (label of labelList; track label) {
+                <mat-option [value]="label">{{label}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </ng-template> 
+ 
 </mat-dialog-content>
 </form>
 <mat-dialog-actions class="row two-columns-buttons">

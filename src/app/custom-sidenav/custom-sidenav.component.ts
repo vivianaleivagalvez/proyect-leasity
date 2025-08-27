@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+
+export type MenuItem = {
+  icon: string;
+  label: string;
+  router?: string;
+}
 
 @Component({
   selector: 'app-custom-sidenav',
@@ -6,5 +12,13 @@ import { Component } from '@angular/core';
   styleUrl: './custom-sidenav.component.scss'
 })
 export class CustomSidenavComponent {
+
+  menuItems = signal<MenuItem[]>([
+    {
+     icon: 'dashboard',
+     label: 'Listado CRUD',
+     router: 'contacts'
+    }
+  ])
 
 }

@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule } from '@angular/material/sidenav'
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.component';
+import { MatListModule } from '@angular/material/list'
 
 
 @NgModule({
@@ -36,6 +36,7 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
     MatButtonModule,
     MatSelectModule,
     MatSidenavModule,
+    MatListModule,
   ],
   exports: [
     CommonModule,
@@ -51,6 +52,7 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
     MatButtonModule,
     MatSelectModule,
     MatSidenavModule,
+    MatListModule
   ]
 })
 export class SharedModule { }

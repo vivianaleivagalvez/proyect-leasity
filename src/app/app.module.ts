@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { ContactsComponent } from './contacts/contacts.component';
 import { CreateComponent } from './contacts/create/create.component';
 import { EditComponent } from './contacts/edit/edit.component';
+import { CustomSidenavComponent } from './custom-sidenav/custom-sidenav.component';
 
 
 
@@ -19,6 +20,7 @@ import { EditComponent } from './contacts/edit/edit.component';
     ContactsComponent,
     CreateComponent,
     EditComponent,
+    CustomSidenavComponent,
   ],
   imports: [
     BrowserModule,

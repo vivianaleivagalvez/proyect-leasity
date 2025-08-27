@@ -23,7 +23,7 @@ export class CustomSidenavComponent {
     {
      icon: 'dashboard',
      label: 'Dashboard',
-     router: '/'
+     router: 'widget'
     },
     {
      icon: 'person',

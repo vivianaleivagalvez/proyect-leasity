@@ -1,0 +1,57 @@
+.dashboard-container {
+  padding: 16px;
+}
+
+.top-card {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 16px;
+  gap: 16px;
+}
+
+.card-content h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.bg-0 {
+  background: linear-gradient(45deg, #4099ff, #73b4ff);
+}
+.bg-1 {
+  background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+}
+.bg-2 {
+  background: linear-gradient(45deg, #ffb64d, #ffcb80);
+}
+.bg-3 {
+  background: linear-gradient(45deg, #ff5370, #ff869a);
+}
+
+.card-content p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+.content-card{
+    box-shadow: 0 1px 2.94px .06px #041a3729;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.top-cards-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-card {
+  margin: 24px 0;
+}
+
+mat-card {
+  width: 100%;
+}

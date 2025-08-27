@@ -16,6 +16,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule } from '@angular/material/sidenav'
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatListModule } from '@angular/material/list'
+import {MatCardModule} from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {DialogModule} from '@angular/cdk/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 
 
@@ -38,6 +43,10 @@ import { MatListModule } from '@angular/material/list'
     MatSelectModule,
     MatSidenavModule,
     MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    DialogModule,
+    MatTabsModule
   ],
   exports: [
     CommonModule,
@@ -53,7 +62,11 @@ import { MatListModule } from '@angular/material/list'
     MatButtonModule,
     MatSelectModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    DialogModule,
+    MatTabsModule
   ]
 })
 export class SharedModule { 

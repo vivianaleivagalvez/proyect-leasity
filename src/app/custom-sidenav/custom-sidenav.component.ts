@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, Input, signal } from '@angular/core';
 
 export type MenuItem = {
   icon: string;
@@ -12,13 +12,27 @@ export type MenuItem = {
   styleUrl: './custom-sidenav.component.scss'
 })
 export class CustomSidenavComponent {
+  sideNavCollapsed= signal(false);
+  @Input() set collapsed(val: boolean){
+    this.sideNavCollapsed.set(val);
+  }
+
+
 
   menuItems = signal<MenuItem[]>([
     {
      icon: 'dashboard',
-     label: 'Listado CRUD',
-     router: 'contacts'
+     label: 'Dashboard',
+     router: '/'
+    },
+    {
+     icon: 'person',
+     label: 'Contact CRUD',
+     router: 'contact'
     }
   ])
+
+
+  profilePicSize = computed(() => this.sideNavCollapsed() ? '32': '100');
 
 }

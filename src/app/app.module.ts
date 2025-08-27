@@ -11,6 +11,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { CreateComponent } from './contacts/create/create.component';
 import { EditComponent } from './contacts/edit/edit.component';
 import { CustomSidenavComponent } from './custom-sidenav/custom-sidenav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 
@@ -21,6 +23,7 @@ import { CustomSidenavComponent } from './custom-sidenav/custom-sidenav.componen
     CreateComponent,
     EditComponent,
     CustomSidenavComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule } from '@angular/material/sidenav'
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatListModule } from '@angular/material/list'
+
 
 
 @NgModule({
@@ -55,4 +56,5 @@ import { MatListModule } from '@angular/material/list'
     MatListModule
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+}
